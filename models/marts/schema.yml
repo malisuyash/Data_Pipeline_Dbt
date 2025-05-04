@@ -1,0 +1,46 @@
+version: 2
+
+models:
+  - name: kpi_delay_summary
+    description: "Aggregates KPIs for delays, on-time %, and weather impact grouped by airport, airline, hour."
+    columns:
+      - name: Origin
+        description: "Origin airport code."
+      - name: Airline
+        description: "Airline carrier."
+      - name: weather_condition
+        description: "Categorized weather condition (Fog, Clear, etc.)."
+      - name: weather_severity
+        description: "Weather impact severity level."
+      - name: scheduled_hour
+        description: "Hour of day."
+      - name: total_flights
+        description: "Total number of flights in the group."
+      - name: avg_dep_delay
+        description: "Average departure delay in minutes."
+      - name: avg_arr_delay
+        description: "Average arrival delay in minutes."
+      - name: on_time_pct
+        description: "Percentage of flights that were on time."
+      - name: long_delay_pct
+        description: "Percentage of flights delayed over 60 minutes."
+      - name: delay_occurrence_rate
+        description: "Percentage of all flights that were delayed (>15 min)."
+
+  # - name: marts_delay_risk_scoring_model
+  #   description: "Risk classification of delays based on weather severity and average delay."
+  #   columns:
+  #     - name: Origin
+  #       description: "Origin airport code."
+  #     - name: Airline
+  #       description: "Airline carrier."
+  #     - name: weather_condition
+  #       description: "Weather condition category."
+  #     - name: scheduled_hour
+  #       description: "Flight hour."
+  #     - name: avg_dep_delay
+  #       description: "Average departure delay in minutes."
+  #     - name: weather_severity
+  #       description: "Weather impact level."
+  #     - name: delay_risk_score
+  #       description: "Classified risk: LOW, MEDIUM, or HIGH."

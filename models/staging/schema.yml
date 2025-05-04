@@ -1,0 +1,76 @@
+version: 2
+
+sources:
+  - name: flight_delay_analytics
+    database: dbt-flight-and-weather  
+    schema: flight_delay_analytics
+    tables:
+      - name: raw_flight_delays
+      - name: raw_cause_delays
+      - name: raw_weather_logs
+
+models:
+  - name: stg_flight_delays
+    description: "Cleaned + engineered main flight delay data"
+
+models:
+  - name: stg_flight_delays
+    description: "Cleans and engineers raw flight delay data for downstream analysis."
+    columns:
+      - name: FlightDate
+        description: "Date of the flight."
+      - name: Airline
+        description: "Airline carrier code."
+      - name: Origin
+        description: "Origin airport code."
+      - name: Dest
+        description: "Destination airport code."
+      - name: ScheduledDepartureTime
+        description: "Scheduled departure timestamp (datetime)."
+      - name: scheduled_hour
+        description: "Extracted hour of the day from CRSDepTime."
+      - name: DepDelayMinutes
+        description: "Departure delay in minutes."
+      - name: is_delayed
+        description: "Binary flag if delay >= 15 minutes."
+      - name: delay_bucket
+        description: "Bucketed delay range: On Time, 15–30 min, 30–60 min, >60 min."
+      - name: is_peak_hour
+        description: "True if scheduled between 7–10 AM or 5–8 PM."
+
+  - name: stg_cause_delays
+    description: "Extracts and renames fields from raw cause-specific delay data."
+    columns:
+      - name: CARRIER_DELAY
+        description: "Delay in minutes caused by carrier issues."
+      - name: WEATHER_DELAY
+        description: "Delay in minutes caused by weather."
+      - name: NAS_DELAY
+        description: "Delay due to National Aviation System."
+      - name: SECURITY_DELAY
+        description: "Delay due to security-related issues."
+      - name: LATE_AIRCRAFT_DELAY
+        description: "Delay due to previous flight arriving late."
+      - name: CANCELLATION_CODE
+        description: "Code indicating reason for cancellation."
+
+  - name: stg_weather_logs
+    description: "Standardizes and categorizes real-time weather logs for joins."
+    columns:
+      - name: airport_code
+        description: "Airport where weather was recorded."
+      - name: timestamp_utc
+        description: "UTC timestamp of the weather record."
+      - name: weather_hour
+        description: "Hour extracted from timestamp."
+      - name: weather_condition
+        description: "Categorical weather label (Fog, Rain, Clear, etc.)."
+      - name: weather_severity
+        description: "Derived severity: Severe, High Wind, Normal."
+      - name: temperature_c
+        description: "Temperature in Celsius."
+      - name: wind_speed_mps
+        description: "Wind speed in meters per second."
+      - name: visibility_km
+        description: "Visibility in kilometers."
+
