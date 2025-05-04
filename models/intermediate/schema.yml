@@ -1,0 +1,23 @@
+version: 2
+
+models:
+  - name: int_weather_hourly_lookup
+    description: "Hourly-level weather conditions with severity classification"
+    columns:
+      - name: airport_code
+      - name: weather_hour
+      - name: temperature_c
+      - name: weather_desc
+      - name: weather_severity
+      - name: wind_speed_mps
+      - name: visibility_m
+
+  - name: int_flights_weather_joined
+    description: "Flight records enriched with matched weather context"
+    columns:
+      - name: FlightDate
+      - name: Origin
+      - name: ScheduledDepartureTime
+      - name: DepDelayMinutes
+      - name: weather_desc
+      - name: weather_severity
