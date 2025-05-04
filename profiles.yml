@@ -1,0 +1,12 @@
+default:
+  outputs:
+    dev:
+      type: bigquery
+      method: service-account
+      project: dbt-flight-and-weather         # ← GCP project ID
+      dataset: dbt_smali_flight_weather       # ← target BQ dataset
+      threads: 2
+      keyfile: /workspace/service_account.json  # path inside Cloud Function folder
+      timeout_seconds: 300
+      location: US
+  target: dev
