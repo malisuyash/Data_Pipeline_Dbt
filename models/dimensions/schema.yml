@@ -1,0 +1,65 @@
+# version: 2
+
+# models:
+#   - name: dim_airports
+#     description: "Airport dimension containing origin and destination airport details"
+#     columns:
+#       - name: airport_code
+#         description: "Unique airport IATA code"
+#       - name: city
+#         description: "City where the airport is located"
+#       - name: state
+#         description: "Two-letter state code"
+#       - name: state_fips
+#         description: "Federal Information Processing Standard (FIPS) state code"
+#       - name: state_name
+#         description: "Full name of the state"
+
+#   - name: dim_airlines
+#     description: "Airline dimension containing standardized airline info"
+#     columns:
+#       - name: airline_name
+#         description: "Full name of the airline"
+#       - name: iata_code
+#         description: "IATA code of the marketing airline"
+#       - name: marketing_network
+#         description: "Marketing airline network group"
+
+#   - name: dim_time
+#     description: "Time dimension extracted from FlightDate"
+#     columns:
+#       - name: FlightDate
+#         description: "Date of the flight"
+#       - name: day_of_week
+#         description: "Day of the week (1=Sunday, 7=Saturday)"
+#       - name: month
+#         description: "Month of the flight"
+#       - name: year
+#         description: "Year of the flight"
+#       - name: is_weekend
+#         description: "Boolean flag if the day is a weekend"
+
+
+version: 2
+
+models:
+  - name: dim_airports
+    description: "Unique list of airports from Origin/Dest fields."
+    columns:
+      - name: airport_code
+        description: "3-letter IATA airport code."
+
+  - name: dim_airlines
+    description: "List of airline carriers."
+    columns:
+      - name: airline_name
+        description: "Airline name as found in flight records."
+
+  - name: dim_time
+    description: "Calendar and time metadata from flight dates."
+    columns:
+      - name: FlightDate
+      - name: day_of_week
+      - name: month
+      - name: year
+      - name: is_weekend

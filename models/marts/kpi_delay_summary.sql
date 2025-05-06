@@ -1,5 +1,7 @@
 -- models/marts/marts_delay_kpi_summary.sql
--- High-level KPIs grouped by airport, airline, hour, and weather
+-- KPIs grouped by airport, airline, hour, and weather
+{{ config(materialized='table') }}
+
 select
     origin,
     airline,

@@ -4,7 +4,6 @@ version: '1.0'
 profile: default  
 
 model-paths: ["models"]
-
 analysis-paths: ["analysis"]
 seed-paths: ["seeds"]
 macro-paths: ["macros"]
@@ -12,9 +11,16 @@ snapshot-paths: ["snapshots"]
 
 models:
   flight_weather_project:
+    +materialized: view  # Default fallback
     staging:
       +materialized: view
     intermediate:
       +materialized: view
+
+  dbt_smali_flight_weather:
     marts:
+      +materialized: table
+    fact:
+      +materialized: table
+    staging:
       +materialized: view

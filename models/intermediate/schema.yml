@@ -2,7 +2,7 @@ version: 2
 
 models:
   - name: int_weather_hourly_lookup
-    description: "Hourly-level weather conditions with severity classification"
+    description: "Hourly-level weather records derived from timestamp."
     columns:
       - name: airport_code
       - name: weather_hour
@@ -13,11 +13,13 @@ models:
       - name: visibility_m
 
   - name: int_flights_weather_joined
-    description: "Flight records enriched with matched weather context"
+    description: "Combines flight, weather, and cause delay data for further KPI analysis."
     columns:
       - name: FlightDate
       - name: Origin
       - name: ScheduledDepartureTime
       - name: DepDelayMinutes
-      - name: weather_desc
+      - name: WEATHER_DELAY
+      - name: CARRIER_DELAY
+      - name: weather_condition
       - name: weather_severity

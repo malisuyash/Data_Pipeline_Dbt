@@ -1,0 +1,22 @@
+version: 2
+
+models:
+  - name: fact_flight_delays
+    description: "Central fact table joining delays, weather, and airline info."
+    columns:
+      - name: FlightDate
+      - name: Airline
+      - name: Origin
+      - name: Dest
+      - name: scheduled_hour
+      - name: DepDelayMinutes
+      - name: ArrDelayMinutes
+      - name: delay_bucket
+      - name: is_delayed
+      - name: is_peak_hour
+      - name: Cancelled
+      - name: Diverted
+      - name: weather_condition
+      - name: weather_severity
+      - name: WEATHER_DELAY
+      - name: CARRIER_DELAY
