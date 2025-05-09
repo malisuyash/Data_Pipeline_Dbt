@@ -7,6 +7,15 @@ SELECT
   Origin,
   Dest,
 
+  -- New fields for dimensions/geography
+  OriginCityName AS origin_city,
+  OriginState AS origin_state,
+  OriginStateName AS origin_state_name,
+
+--   DestCityName AS dest_city,
+--   DestState AS dest_state,
+--   DestStateName AS dest_state_name,
+
   -- Standardized and padded scheduled time
   LPAD(CAST(CRSDepTime AS STRING), 4, '0') AS CRSDepTime,
   CAST(DepDelayMinutes AS FLOAT64) AS DepDelayMinutes,
@@ -41,10 +50,5 @@ SELECT
     ELSE FALSE
   END AS is_peak_hour
 
--- FROM {{ source('flight_delay_analytics', 'raw_flight_delays') }}
 FROM `dbt-flight-and-weather.flight_delay_analytics.raw_flight_delays`
-
-
-WHERE
-  Cancelled = FALSE AND Diverted = FALSE
 

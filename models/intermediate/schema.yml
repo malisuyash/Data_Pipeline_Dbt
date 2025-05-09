@@ -5,21 +5,59 @@ models:
     description: "Hourly-level weather records derived from timestamp."
     columns:
       - name: airport_code
+        description: "Airport IATA code"
       - name: weather_hour
+        description: "Hour of day extracted from UTC timestamp"
       - name: temperature_c
+        description: "Temperature in degrees Celsius"
       - name: weather_desc
+        description: "Raw weather description from API"
       - name: weather_severity
+        description: "Categorized severity of weather conditions"
       - name: wind_speed_mps
+        description: "Wind speed in meters per second"
       - name: visibility_m
+        description: "Visibility in meters"
 
   - name: int_flights_weather_joined
     description: "Combines flight, weather, and cause delay data for further KPI analysis."
     columns:
       - name: FlightDate
+        description: "Date of the flight"
       - name: Origin
+        description: "Origin airport code"
       - name: ScheduledDepartureTime
+        description: "Scheduled time of departure"
       - name: DepDelayMinutes
+        description: "Departure delay in minutes"
       - name: WEATHER_DELAY
+        description: "Weather-related delay in minutes"
       - name: CARRIER_DELAY
+        description: "Carrier-related delay in minutes"
       - name: weather_condition
+        description: "Weather condition classification (e.g., fog, rain)"
       - name: weather_severity
+        description: "Severity level based on visibility and wind"
+
+  - name: latest_weather_snapshot
+    description: "Latest weather readings per airport, filtered to most recent timestamp."
+    columns:
+      - name: airport_code
+        description: "Airport code"
+      - name: timestamp_utc
+        description: "Latest available UTC timestamp of weather reading"
+      - name: temperature_c
+        description: "Latest temperature at the airport (Celsius)"
+      - name: wind_speed_mps
+        description: "Latest wind speed (m/s)"
+      - name: visibility_m
+        description: "Latest visibility in meters"
+      - name: weather_desc
+        description: "Latest weather description"
+      - name: weather_condition
+        description: "Categorized condition from weather description"
+      - name: weather_severity
+        description: "Severity classification"
+      - name: weather_risk_score
+        description: "Calculated risk score (0–3) based on visibility, wind, and temp"
+
