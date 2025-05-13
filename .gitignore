@@ -26,3 +26,5 @@ __pycache__/
 
 # Ignore service account keys if used
 service_account.json
+profiles.yml
+profiles.yml
