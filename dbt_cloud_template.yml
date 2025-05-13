@@ -1,0 +1,12 @@
+version: "1"
+context:
+  active-host: "<your-dbt-host>"
+  active-project: "<your-project-id>"
+projects:
+  - project-name: "<your-project-name>"
+    project-id: "<your-project-id>"
+    account-name: "<your-account-name>"
+    account-id: "<your-account-id>"
+    account-host: "<your-account-host>"
+    token-name: "<token-name>"
+    token-value: "<your-dbt-api-token>"
