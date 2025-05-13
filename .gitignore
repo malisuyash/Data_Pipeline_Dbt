@@ -3,3 +3,26 @@
 target/
 dbt_packages/
 logs/
+
+# Ignore credentials and sensitive data
+*.env
+*.json  # This will ignore ALL .json files
+
+# You can whitelist specific safe JSON files if needed (see Step 5)
+
+# Ignore compiled Python files
+__pycache__/
+*.pyc
+
+# Ignore editor configs
+.vscode/
+.idea/
+
+# MacOS system files
+.DS_Store
+
+# Jupyter notebook checkpoint files
+*.ipynb_checkpoints
+
+# Ignore service account keys if used
+service_account.json
