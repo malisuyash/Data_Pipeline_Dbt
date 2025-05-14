@@ -10,7 +10,7 @@ JARS_PATH = os.getenv("SPARK_JARS", "/path/to/spark-bigquery.jar,/path/to/gcs-co
 KEYFILE = os.getenv("GCP_KEYFILE", "/path/to/service_account.json")
 GCS_BUCKET = os.getenv("GCS_BUCKET", "your_temp_gcs_bucket")
 PROJECT_ID = os.getenv("GCP_PROJECT_ID", "your-gcp-project-id")
-BQ_DATASET = os.getenv("BQ_DATASET", "flight_delay_analytics")
+BQ_DATASET = os.getenv("BQ_DATASET", "your-BQ-dataset")
 CSV_FLIGHT = os.getenv("CSV_FLIGHT", "/path/to/Combined_Flights_2022.csv")
 CSV_CAUSE = os.getenv("CSV_CAUSE", "/path/to/merged_flights_2022.csv")
 
@@ -77,7 +77,7 @@ def run_static_loader():
     cause_df = preprocess_cause_delay_data(cause_df)
     save_to_bigquery(cause_df, "raw_cause_delays")
 
-    print("✅ Both datasets loaded to BigQuery.")
+    print("Both datasets loaded to BigQuery.")
     spark.stop()
 
 if __name__ == "__main__":
